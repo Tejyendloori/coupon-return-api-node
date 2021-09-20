@@ -9,7 +9,7 @@ app.use( express.static('public') )
 app.use(express.urlencoded({extended: true}));
 app.use(express.json()) // To parse the incoming requests with JSON payloads
 /* dinesh code starts here */
-app.post("/test", (request, response)=>{
+app.post("/get-coupon-code", (request, response)=>{
 
     var postData = request.body;
 
@@ -29,12 +29,20 @@ app.post("/test", (request, response)=>{
           }
       }
       let code = ""
-      const req = https.request(options, res => {     
-        res.on('data', d => {
-         code =  process.stdout.write(d)
-         response.send({"code":code, "d":d})
-        })
+      const req = https.request(options, res => {
+          let str = ''
+          res.on('data', function (chunk) {
+            str += chunk;
+        });
+
+        res.on('end', function () {
+            console.log(req.data);
+            console.log(str);
+            // your code here if you want to use the results !
+            response.send({"code":str})
+        });
       })
+    
       req.on('error', error => {
         console.error(error)
         response.send({"code":""})
