@@ -1,13 +1,84 @@
 {
-  "workflowApiVersion": "1.1",
-  "metaData": {
-    "icon": "icon.png",
-    "category": "message"
-  },
-  "type": "REST",
-  "userInterfaces": {
-    "configInspector": {
-      "size": "medium"
+    "workflowApiVersion": "1.1",
+    "metaData": {
+        "icon": "images/icon.png",
+        "iconSmall": "images/iconSmall.png",
+        "category": "message"
+    },
+    "type": "REST",
+    "lang": {
+        "en-US": {
+            "name": "Template",
+          "description": "A Template for a custom Journey Builder activity",
+          "step1Label": "Configure Activity"
+        }
+    },
+    "arguments": {
+        "execute": {
+           "inArguments":[{'contactkey':"{{Contact.Key}}"},
+		   {'TransId':"{{Contact.Attribute.Test-DE2.TransId}}"},
+		   {'AmountUsed':"{{Contact.Attribute.Test-DE2.AmountUsed}}"},
+		   {'MembershipId':"{{Contact.Attribute.Test-DE2.MembershipId}}"}
+		   {'MemberPhone':"{{Contact.Attribute.Test-DE2.Mobile No}}"},
+		   {'Sequence':"{{Contact.Attribute.Test-DE2.Sequence}}"},,
+		   {'BalanceType':"{{Contact.Attribute.Test-DE2.BalanceType}}"},,
+		   {'RecognitionId':"{{Contact.Attribute.Test-DE2.RecognitionId}}"},
+		   {'MemberEmail':"{{Contact.Attribute.Test-DE2.MemberEmail}}"},
+		   {'SchemeId':"{{Contact.Attribute.Test-DE2.SchemeId}}"},
+		   {'VoucherExpiry':"{{Contact.Attribute.Test-DE2.VoucherExpiry}}"},
+		   {'BalancePoints':"{{Contact.Attribute.Test-DE2.BalancePoints}}"},
+		   {'IsEnrollment':"{{Contact.Attribute.Test-DE2.IsEnrollment}}"},
+		   {'MemberType':"{{Contact.Attribute.Test-DE2.MemberType}}"},
+		   {'TransactionDate':"{{Contact.Attribute.Test-DE2.TransactionDate}}"},
+		   {'TransAmount':"{{Contact.Attribute.Test-DE2.TransAmount}}"},
+		   {'ComplexName':"{{Contact.Attribute.Test-DE2.ComplexName}}"}],
+          "outArguments": [],
+          "url": "https://jbcarestapi.herokuapp.com/create/journeybuilder/execute",
+           "verb": "POST",
+            "body": "",
+            "header": "",
+            "format": "json",
+            "useJwt": true,
+            "timeout": 10000
+        }},
+    "configurationArguments": {
+      "save": {
+        "url": "https://jbcarestapi.herokuapp.com/create/save",
+          "verb": "POST",
+        "useJwt": true
+       },
+       "publish": {
+        "url": "https://jbcarestapi.herokuapp.com/create/publish",
+           "verb": "POST",
+        "useJwt": true
+       },
+      "stop": {
+        "url": "https://jbcarestapi.herokuapp.com/create/stop",
+           "verb": "POST",
+        "useJwt": true
+      },
+      "validate": {
+        "url": "https://jbcarestapi.herokuapp.com/create/validate",
+        "verb": "POST",
+        "useJwt": true
+      }
+    },
+    "wizardSteps": [
+        { "label": "Configure Activity", "key": "step1" }
+    ],
+    "userInterfaces": {
+        "configModal": {
+            "height": 400,
+            "width": 1000,
+          "fullscreen": false
+        }
+    },
+    "schema": {
+        "arguments": {
+            "execute": {
+                "inArguments": [],
+                "outArguments": [{vouchercode :{dataType :'Text',direction:'out',access:'visible'}}]
+            }
+        }
     }
-  }
 }

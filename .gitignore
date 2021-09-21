@@ -1,2 +1,6 @@
 node_modules
-npm-debug.log
+bower_components
+*.swp
+*.swo
+*.log
+public/vendor/salesforce-lightning-design-system/
