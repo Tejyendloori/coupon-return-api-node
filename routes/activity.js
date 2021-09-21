@@ -36,7 +36,7 @@ exports.execute = async (req, res) => {
  */
 exports.save = async (req, res) => {
   console.log("Save")
-  const data = JWT(req.body);
+  const data = typeof(req.body);
   console.log(data)
   console.log("-----------------Save")
 
@@ -52,7 +52,7 @@ exports.save = async (req, res) => {
  */
 exports.publish = (req, res) => {
   console.log("publish")
-  const data = JWT(req.body);
+  const data = JSON.parse(req.body);
   console.log(data)
   console.log("-----------------publish")
   res.status(200).send({
