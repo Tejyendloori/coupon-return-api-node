@@ -45,6 +45,7 @@ exports.save = async (req, res) => {
  * @param res
  */
 exports.publish = (req, res) => {
+  console.log(req.body)
   console.log("publish")
   res.status(200).send({
     status: 'ok',
@@ -58,6 +59,8 @@ exports.publish = (req, res) => {
  * @param res
  */
 exports.validate = (req, res) => {
+  console.log(req.body)
+
   console.log("validate")
   res.status(200).send({
     status: 'ok',
