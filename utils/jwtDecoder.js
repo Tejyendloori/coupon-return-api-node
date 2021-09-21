@@ -1,6 +1,7 @@
 const JWT = require('jsonwebtoken');
 
 module.exports = (body) => {
+  console.log("decoder")
   if (!body) {
     return new Error('invalid jwtdata');
   }
