@@ -25,6 +25,7 @@
       "useJwt": true,
       "inArguments": [
         {
+          "discount":10,
           "email": "{{Contact.Default.EmailAddress}}",
           "to": "{{Contact.Default.MobileNumber}}" ,
           "all": "{{Contact}}"
@@ -40,6 +41,7 @@
       "useJwt": true,
       "inArguments": [
         {
+          "discount":14,
           "email": "{{Contact.Default.EmailAddress}}",
           "to": "{{Contact.Default.MobileNumber}}" ,
           "all": "{{Contact}}"
@@ -73,6 +75,13 @@
     "arguments": {
         "save": {
             "inArguments": [
+              {
+                "discount": {
+                  "dataType": "Number",
+                  "direction": "out",
+                  "access": "visible"
+                }
+              },
                 {
                     "email": {
                         "dataType": "Email",
