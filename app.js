@@ -2,7 +2,8 @@ var express = require( 'express' )
 const request = require('request');
 var app = express()
 var port = process.env.PORT || 3000
-const https = require('https')
+const https = require('https');
+const { response } = require('express');
 
 
 app.use( express.static('public') )
@@ -50,6 +51,14 @@ app.post("/get-coupon-code", (request, response)=>{
       req.write(data)
       req.end()    
 });
+app.get("/execute", (request,response)=>{
+  console.log("get request")
+  response.send({code:"sampleget"})
+} )
+app.post("/execute", (request,response)=>{
+  console.log("post request")
+  response.send({code:"sample post"})
+} )
 /* dinesh code starts here */
 
 app.listen( port, () => console.log( `App listening on port ${port}!`) )
