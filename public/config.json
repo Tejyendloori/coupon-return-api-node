@@ -25,10 +25,7 @@
       "useJwt": true,
       "inArguments": [
         {
-          "discount":10,
-          "email": "{{Contact.Default.EmailAddress}}",
-          "to": "{{Contact.Default.MobileNumber}}" ,
-          "all": "{{Contact}}"
+          "discount":10
         }               
       ],
       "outArguments": []
@@ -41,10 +38,7 @@
       "useJwt": true,
       "inArguments": [
         {
-          "discount":14,
-          "email": "{{Contact.Default.EmailAddress}}",
-          "to": "{{Contact.Default.MobileNumber}}" ,
-          "all": "{{Contact}}"
+          "discount":14
         }               
       ],
       "outArguments": []
@@ -81,28 +75,7 @@
                   "direction": "out",
                   "access": "visible"
                 }
-              },
-                {
-                    "email": {
-                        "dataType": "Email",
-                        "isNullable": false,
-                        "direction": "out"   
-                    }
-                },                    
-                {
-                    "to": {
-                        "dataType": "Phone",
-                        "isNullable": false,
-                        "direction": "out"   
-                    }
-                },
-                {
-                  "all":{
-                    "dataType": "Object",
-                    "isNullable": false,
-                    "direction": "out"   
-                  }
-                }
+              }
             ],
             "outArguments": []
         }
