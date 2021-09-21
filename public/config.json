@@ -27,25 +27,39 @@
     "save": {
       "inArguments": [
         {
-          "contactIdentifier": "{{Contact.Key}}"
+          "contactIdentifier": "TST"
         }
       ],
       "outArguments": [],
-      "url": "https://coupon-return-api.herokuapp.com/journey/save",
+      "url": "https://coupon-return-api.herokuapp.com/journey/save44",
       "verb": "POST",
       "useJwt": true
       
     }
   },
   "configurationArguments": {
-    "save": {
+    "execute": {
       "inArguments": [
         {
           "contactIdentifier": "{{Contact.Key}}"
         }
       ],
       "outArguments": [],
-      "url": "https://coupon-return-api.herokuapp.com/journey/save",
+      "url": "https://coupon-return-api.herokuapp.com/journey/execute",
+      "verb": "POST",
+      
+      "format": "json",
+      "useJwt": true,
+      "timeout": 10000
+    },
+    "save": {
+      "inArguments": [
+        {
+          "contactIdentifier": "TEST"
+        }
+      ],
+      "outArguments": [],
+      "url": "https://coupon-return-api.herokuapp.com/journey/save3",
       "verb": "POST",
       "useJwt": true
       
