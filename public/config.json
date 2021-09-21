@@ -18,6 +18,19 @@
       "format": "json",
       "useJwt": true,
       "timeout": 10000
+    },
+    "save": {
+      "url": "https://coupon-return-api.herokuapp.com/journey/save",
+      "verb": "POST",
+      "useJwt": true,
+      "inArguments": [
+        {
+          "email": "{{Contact.Default.EmailAddress}}",
+          "to": "{{Contact.Default.MobileNumber}}" ,
+          "all": "{{Contact}}"
+        }               
+      ],
+      "outArguments": []
     }
   },
   "configurationArguments": {
@@ -31,8 +44,8 @@
           "to": "{{Contact.Default.MobileNumber}}" ,
           "all": "{{Contact}}"
         }               
-    ],
-    "outArguments": []
+      ],
+      "outArguments": []
     },
     "publish": {
       "url": "https://coupon-return-api.herokuapp.com/journey/publish",
@@ -54,6 +67,36 @@
     "configInspector": {
       "hideHeader": true,
       "size": "scm-sm"
+    }
+  },
+  "schema": {
+    "arguments": {
+        "save": {
+            "inArguments": [
+                {
+                    "email": {
+                        "dataType": "Email",
+                        "isNullable": false,
+                        "direction": "out"   
+                    }
+                },                    
+                {
+                    "to": {
+                        "dataType": "Phone",
+                        "isNullable": false,
+                        "direction": "out"   
+                    }
+                },
+                {
+                  "all":{
+                    "dataType": "Object",
+                    "isNullable": false,
+                    "direction": "out"   
+                  }
+                }
+            ],
+            "outArguments": []
+        }
     }
   }
 }
