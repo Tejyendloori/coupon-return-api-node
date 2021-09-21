@@ -1,7 +1,7 @@
 {
   "workflowApiVersion": "1.1",
   "metaData": {
-     "icon": "images/iconSmall.png",
+     "icon": "https://sample-activity.herokuapp.com/icon.png",
      "category": "message"
   },
   "type": "REST",
@@ -21,7 +21,7 @@
               }               
           ],
           "outArguments": [],
-          "url": "https://coupon-return-api.herokuapp.com/journeybuilder/execute",
+          "url": "https://coupon-return-api.herokuapp.com/execute",
           "verb": "POST",
           "body": "",
           "format": "json",
