@@ -9,8 +9,11 @@ const logger = require('../utils/logger');
  * @returns {Promise<void>}
  */
 exports.execute = async (req, res) => {
+  console.log("execute")
+  console.log(req.body)
   // decode data
   const data = JWT(req.body);
+  console.log(data)
 
   logger.info(data);
 
