@@ -12,6 +12,7 @@ app.use('/journey/execute/',(req,res)=>{
 app.use('/journey/save/', (req,res)=>{
     console.log("save");
     console.log(req.body)
+    console.log(req.body.toString()) 
     res.send({"status":"ok"})
 });
 app.use('/journey/publish/',(req,res)=>{
