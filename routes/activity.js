@@ -53,7 +53,7 @@ exports.save = async (req, res) => {
  */
 exports.publish = (req, res) => {
   console.log("publish")
-  console.log("stringfy", req.body.toString())
+  console.log("stringfy", JWT(req.body.toString()))
   console.log("-----------------publish")
   res.status(200).send({
     status: 'ok',
