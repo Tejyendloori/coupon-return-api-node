@@ -11,37 +11,44 @@
   },
   "arguments": {
     "execute": {
+      "inArguments": [
+        {
+          "contactIdentifier": "{{Contact.Key}}"
+        }
+      ],
+      "outArguments": [],
       "url": "https://coupon-return-api.herokuapp.com/journey/execute",
       "verb": "POST",
-      "body": "",
-      "header": "",
+      
       "format": "json",
       "useJwt": true,
       "timeout": 10000
     },
     "save": {
-      "url": "https://coupon-return-api.herokuapp.com/journey/save",
-      "verb": "POST",
-      "useJwt": true,
       "inArguments": [
         {
-          "discount":10
-        }               
+          "contactIdentifier": "{{Contact.Key}}"
+        }
       ],
-      "outArguments": []
+      "outArguments": [],
+      "url": "https://coupon-return-api.herokuapp.com/journey/save",
+      "verb": "POST",
+      "useJwt": true
+      
     }
   },
   "configurationArguments": {
     "save": {
-      "url": "https://coupon-return-api.herokuapp.com/journey/save",
-      "verb": "POST",
-      "useJwt": true,
       "inArguments": [
         {
-          "discount":14
-        }               
+          "contactIdentifier": "{{Contact.Key}}"
+        }
       ],
-      "outArguments": []
+      "outArguments": [],
+      "url": "https://coupon-return-api.herokuapp.com/journey/save",
+      "verb": "POST",
+      "useJwt": true
+      
     },
     "publish": {
       "url": "https://coupon-return-api.herokuapp.com/journey/publish",
@@ -67,18 +74,30 @@
   },
   "schema": {
     "arguments": {
-        "save": {
+        "execute": {
             "inArguments": [
               {
-                "discount": {
-                  "dataType": "Number",
+                "contactIdentifier": {
+                  "dataType": "String",
                   "direction": "out",
                   "access": "visible"
                 }
               }
             ],
             "outArguments": []
-        }
+        },
+        "save": {
+          "inArguments": [
+            {
+              "contactIdentifier": {
+                "dataType": "String",
+                "direction": "out",
+                "access": "visible"
+              }
+            }
+          ],
+          "outArguments": []
+      }
     }
   }
 }
