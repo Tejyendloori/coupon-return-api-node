@@ -53,8 +53,7 @@ exports.save = async (req, res) => {
  */
 exports.publish = (req, res) => {
   console.log("publish")
-  const data = JSON.parse(req.body);
-  console.log(data)
+  console.log("stringfy", req.body.toString())
   console.log("-----------------publish")
   res.status(200).send({
     status: 'ok',
@@ -68,8 +67,7 @@ exports.publish = (req, res) => {
  * @param res
  */
 exports.validate = (req, res) => {
-  const data = JWT(req.body);
-  console.log(data)
+  console.log("stringfy", req.body.toString())
   console.log("-----------------validate")
   res.status(200).send({
     status: 'ok',
