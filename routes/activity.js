@@ -1,7 +1,6 @@
 const { v1: Uuidv1 } = require('uuid');
 const JWT = require('../utils/jwtDecoder');
 const logger = require('../utils/logger');
-import jwt_decode from "jwt-decode";
 
 /**
  * The Journey Builder calls this method for each contact processed by the journey.
@@ -54,7 +53,7 @@ exports.save = async (req, res) => {
  */
 exports.publish = (req, res) => {
   console.log("publish")
-  console.log("stringfy", (req.body.toString()))
+  console.log("stringfy", req.body.toString())
   console.log("-----------------publish")
   res.status(200).send({
     status: 'ok',
@@ -69,11 +68,6 @@ exports.publish = (req, res) => {
  */
 exports.validate = (req, res) => {
   console.log("stringfy", req.body.toString())
-  // var decoded = jwt_decode(req.body.toString());
- 
-  // console.log(decoded);
-
-  console.log("stringfy", JWT())
   console.log("-----------------validate")
   res.status(200).send({
     status: 'ok',
