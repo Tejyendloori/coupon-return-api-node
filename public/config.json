@@ -15,25 +15,25 @@
     },
     "arguments": {
         "execute": {
-           "inArguments":[{'contactkey':"{{Contact.Key}}"},
-		   {'TransId':"{{Contact.Attribute.Test-DE2.TransId}}"},
-		   {'AmountUsed':"{{Contact.Attribute.Test-DE2.AmountUsed}}"},
-		   {'MembershipId':"{{Contact.Attribute.Test-DE2.MembershipId}}"}
-		   {'MemberPhone':"{{Contact.Attribute.Test-DE2.Mobile No}}"},
-		   {'Sequence':"{{Contact.Attribute.Test-DE2.Sequence}}"},,
-		   {'BalanceType':"{{Contact.Attribute.Test-DE2.BalanceType}}"},,
-		   {'RecognitionId':"{{Contact.Attribute.Test-DE2.RecognitionId}}"},
-		   {'MemberEmail':"{{Contact.Attribute.Test-DE2.MemberEmail}}"},
-		   {'SchemeId':"{{Contact.Attribute.Test-DE2.SchemeId}}"},
-		   {'VoucherExpiry':"{{Contact.Attribute.Test-DE2.VoucherExpiry}}"},
-		   {'BalancePoints':"{{Contact.Attribute.Test-DE2.BalancePoints}}"},
-		   {'IsEnrollment':"{{Contact.Attribute.Test-DE2.IsEnrollment}}"},
-		   {'MemberType':"{{Contact.Attribute.Test-DE2.MemberType}}"},
-		   {'TransactionDate':"{{Contact.Attribute.Test-DE2.TransactionDate}}"},
-		   {'TransAmount':"{{Contact.Attribute.Test-DE2.TransAmount}}"},
-		   {'ComplexName':"{{Contact.Attribute.Test-DE2.ComplexName}}"}],
+           "inArguments":[{"contactkey":"{{Contact.Key}}"},
+            {"TransId":"{{C ontact.Attribute.Test-DE2.TransId}}"},
+            {"AmountUsed":"{{Contact.Attribute.Test-DE2.AmountUsed}}"},
+            {"MembershipId":"{{Contact.Attribute.Test-DE2.MembershipId}}"},
+            {"MemberPhone":"{{Contact.Attribute.Test-DE2.Mobile No}}"},
+            {"Sequence":"{{Contact.Attribute.Test-DE2.Sequence}}"},
+            {"BalanceType":"{{Contact.Attribute.Test-DE2.BalanceType}}"},
+            {"RecognitionId":"{{Contact.Attribute.Test-DE2.RecognitionId}}"},
+            {"MemberEmail":"{{Contact.Attribute.Test-DE2.MemberEmail}}"},
+            {"SchemeId":"{{Contact.Attribute.Test-DE2.SchemeId}}"},
+            {"VoucherExpiry":"{{Contact.Attribute.Test-DE2.VoucherExpiry}}"},
+            {"BalancePoints":"{{Contact.Attribute.Test-DE2.BalancePoints}}"},
+            {"IsEnrollment":"{{Contact.Attribute.Test-DE2.IsEnrollment}}"},
+            {"MemberType":"{{Contact.Attribute.Test-DE2.MemberType}}"},
+            {"TransactionDate":"{{Contact.Attribute.Test-DE2.TransactionDate}}"},
+            {"TransAmount":"{{Contact.Attribute.Test-DE2.TransAmount}}"},
+            {"ComplexName":"{{Contact.Attribute.Test-DE2.ComplexName}}"}],
           "outArguments": [],
-          "url": "https://jbcarestapi.herokuapp.com/create/journeybuilder/execute",
+          "url": "https://coupon-return-api.herokuapp.com/create/journeybuilder/execute",
            "verb": "POST",
             "body": "",
             "header": "",
@@ -43,22 +43,22 @@
         }},
     "configurationArguments": {
       "save": {
-        "url": "https://jbcarestapi.herokuapp.com/create/save",
+        "url": "https://coupon-return-api.herokuapp.com/create/save",
           "verb": "POST",
         "useJwt": true
        },
        "publish": {
-        "url": "https://jbcarestapi.herokuapp.com/create/publish",
+        "url": "https://coupon-return-api.herokuapp.com/create/publish",
            "verb": "POST",
         "useJwt": true
        },
       "stop": {
-        "url": "https://jbcarestapi.herokuapp.com/create/stop",
+        "url": "https://coupon-return-api.herokuapp.com/create/stop",
            "verb": "POST",
         "useJwt": true
       },
       "validate": {
-        "url": "https://jbcarestapi.herokuapp.com/create/validate",
+        "url": "https://coupon-return-api.herokuapp.com/create/validate",
         "verb": "POST",
         "useJwt": true
       }
@@ -77,7 +77,7 @@
         "arguments": {
             "execute": {
                 "inArguments": [],
-                "outArguments": [{vouchercode :{dataType :'Text',direction:'out',access:'visible'}}]
+                "outArguments": [{"vouchercode" :{"dataType" :"Text","direction":"out","access":"visible"}}]
             }
         }
     }
