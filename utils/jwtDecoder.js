@@ -6,7 +6,7 @@ module.exports = (body) => {
     return new Error('invalid jwtdata');
   }
 
-  return JWT.verify(body.toString('utf8'), "", {
+  return JWT.verify(body.toString('utf8'), "secret", {
     algorithm: 'HS256',
   });
 };
