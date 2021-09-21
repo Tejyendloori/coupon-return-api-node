@@ -1,12 +1,13 @@
 const JWT = require('jsonwebtoken');
 
 module.exports = (body) => {
+  JWT.
   console.log("decoder")
   if (!body) {
     return new Error('invalid jwtdata');
   }
 
-  return JWT.verify(body.toString('utf8'), process.env.JWT, {
+  return JWT.verify(body.toString('utf8'), "", {
     algorithm: 'HS256',
   });
 };
