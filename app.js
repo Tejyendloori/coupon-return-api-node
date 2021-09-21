@@ -55,13 +55,25 @@ app.post("/", (request, response)=>{
       req.write(data)
       req.end()    
 });
-app.get("/execute", (request,response)=>{
+app.get("/journeybuilder/execute", (request,response)=>{
   console.log("get request")
   response.send({code:"sampleget"})
 } )
-app.post("/execute", (request,response)=>{
+app.post("/journeybuilder/execute", (request,response)=>{
   console.log("post request")
   response.send({code:"sample post"})
+} )
+app.post("/journeybuilder/publish", (request,response)=>{
+  console.log("publish request")
+  response.send({code:"sample publish"})
+} )
+app.post("/journeybuilder/validate ", (request,response)=>{
+  console.log("validate  request")
+  response.send({code:"sample validate "})
+} )
+app.post("/journeybuilder/save ", (request,response)=>{
+  console.log("save  request")
+  response.send({code:"sample save "})
 } )
 /* dinesh code starts here */
 
