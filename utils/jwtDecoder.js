@@ -6,7 +6,7 @@ module.exports = (body) => {
     return new Error('invalid jwtdata');
   }
 
-  return JWT.verify(body.toString('utf8'), "ECHmFz1CzkFlQaNKQau7cYP838_BAYpBGsn6UEWTZVZO1kYxCjoVIX47YACwJmyP_dYoiWxE4DZSJDc4-INFonuquxWZqGqHhtF--oLBGL6vUxh_FUGLuNKb4YdN9wlhD9TUwbNglT1JUJxP95s2wJoCv8RPEHwSZn87gauksPOrQjSSTaQRPU5Hh-eYgRUluSESkakeGCv1iQ9V6Pmr-R7RTxDSVnyUWbb6xs3THQQpLazdS8WM4itJPTkPNw2", {
+  return JWT.verify(body.toString('utf8'), "LqOIWmdQTSfhraa5UZhLazTMLR3ph7Y_-VcEs-oLnYOZSGpxV9opR8DE-XRzCN8-Cy3HoMZJSCTt4ftlSSJPnjM8kF1XFX8_Q_dkgfx_N920dzsLLuER2c3s-78ejhc6vb6NEWOEINXRk5iMhl8-Wd5Vak3fAfN1WIL_klqAs4icmM6KuUr74NVjiC_mYwatmyPMuo8bzc1vOGmE_EZx_fGv13UAj7NrO6AXyrlvvNrObCslBMKSbEozZs1WCQ2", {
     algorithm: 'HS256',
   });
 };
