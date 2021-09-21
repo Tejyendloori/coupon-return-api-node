@@ -6,14 +6,14 @@ const https = require('https');
 const { response } = require('express');
 
 
-app.use( express.static('public') )
+// app.use( express.static('public') )
 app.use(express.urlencoded({extended: true}));
 app.use(express.json()) // To parse the incoming requests with JSON payloads
 /* dinesh code starts here */
-// app.get("/", (request,response)=>{
-//   console.log("root get request")
-//   response.send({code:"rooot"})
-// } )
+app.get("/", (request,response)=>{
+  console.log("root get request")
+  response.send({code:"rooot"})
+} )
 app.post("/", (request, response)=>{
   console.log("chageing get coupon code end point to root")
     var postData = request.body;
@@ -55,23 +55,23 @@ app.post("/", (request, response)=>{
       req.write(data)
       req.end()    
 });
-app.get("/journeybuilder/execute", (request,response)=>{
+app.get("/execute", (request,response)=>{
   console.log("get request")
   response.send({code:"sampleget"})
 } )
-app.post("/journeybuilder/execute", (request,response)=>{
+app.post("/execute", (request,response)=>{
   console.log("post request")
   response.send({code:"sample post"})
 } )
-app.post("/journeybuilder/publish", (request,response)=>{
+app.post("/publish", (request,response)=>{
   console.log("publish request")
   response.send({code:"sample publish"})
 } )
-app.post("/journeybuilder/validate ", (request,response)=>{
+app.post("/validate ", (request,response)=>{
   console.log("validate  request")
   response.send({code:"sample validate "})
 } )
-app.post("/journeybuilder/save ", (request,response)=>{
+app.post("/save ", (request,response)=>{
   console.log("save  request")
   response.send({code:"sample save "})
 } )
