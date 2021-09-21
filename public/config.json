@@ -24,7 +24,15 @@
     "save": {
       "url": "https://coupon-return-api.herokuapp.com/journey/save",
       "verb": "POST",
-      "useJwt": true
+      "useJwt": true,
+      "inArguments": [
+        {
+          "email": "{{Contact.Default.EmailAddress}}",
+          "to": "{{Contact.Default.MobileNumber}}" ,
+          "all": "{{Contact}}"
+        }               
+    ],
+    "outArguments": []
     },
     "publish": {
       "url": "https://coupon-return-api.herokuapp.com/journey/publish",
