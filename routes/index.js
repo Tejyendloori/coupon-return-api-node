@@ -7,6 +7,7 @@ const fs = require('fs');
  * @param res
  */
 exports.config = (req, res) => {
+  console.log("config calling")
   const domain = req.headers.host || req.headers.origin;
   const file = path.join(__dirname, '..', 'public', 'config.json');
 

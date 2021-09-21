@@ -31,7 +31,7 @@
         }
       ],
       "outArguments": [],
-      "url": "https://coupon-return-api.herokuapp.com/journey/save44",
+      "url": "https://coupon-return-api.herokuapp.com/journey/save",
       "verb": "POST",
       "useJwt": true
       
@@ -59,7 +59,7 @@
         }
       ],
       "outArguments": [],
-      "url": "https://coupon-return-api.herokuapp.com/journey/save3",
+      "url": "https://coupon-return-api.herokuapp.com/journey/save",
       "verb": "POST",
       "useJwt": true
       
