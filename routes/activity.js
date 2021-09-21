@@ -36,9 +36,9 @@ exports.execute = async (req, res) => {
  */
 exports.save = async (req, res) => {
   console.log("Save")
+  console.log(req)
   console.log("stringfy", req.body.toString())
   const data = JWT(req.body);
-  console.log(data)
   console.log(data)
   console.log("-----------------Save")
 
