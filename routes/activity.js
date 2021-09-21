@@ -37,6 +37,7 @@ exports.execute = async (req, res) => {
 exports.save = async (req, res) => {
   console.log("Save")
   const data = typeof(req.body);
+  console.log("stringfy", JSON.stringify(req.body))
   console.log(data)
   console.log("-----------------Save")
 
