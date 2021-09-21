@@ -6,12 +6,16 @@ const https = require('https');
 const { response } = require('express');
 
 
-app.use( express.static('public') )
+// app.use( express.static('public') )
 app.use(express.urlencoded({extended: true}));
 app.use(express.json()) // To parse the incoming requests with JSON payloads
 /* dinesh code starts here */
-app.post("/get-coupon-code", (request, response)=>{
-
+app.get("/", (request,response)=>{
+  console.log("root get request")
+  response.send({code:"rooot"})
+} )
+app.post("/", (request, response)=>{
+  console.log("chageing get coupon code end point to root")
     var postData = request.body;
 
     //Or if this doesn't work
