@@ -12,116 +12,22 @@
          "WhatsAppMessage":"test"
      }
   },
-  "arguments": {
-      "execute": {
-          "inArguments": [
-              {
-                "email": "{{Contact.Default.EmailAddress}}",
-                "to": "{{Contact.Default.MobileNumber}}" 
-              }               
-          ],
-          "outArguments": [],
-          "url": "https://coupon-return-api.herokuapp.com/execute",
-          "verb": "POST",
-          "body": "",
-          "format": "json",
-          "useJwt": false,
-          "timeout": 2000
-      }
-  },
   "configurationArguments": {
     "applicationExtensionKey": "55487024-f84d-44ec-8639-eceaffc3c7a0",
-     "save": {
-         "url": "https://coupon-return-api.herokuapp.com/save",
+     "execute": {
+         "url": "https://coupon-return-api.herokuapp.com/execute",
           "verb": "POST",
           "body": "",
           "format": "json",
           "useJwt": false,
           "timeout": 2000
-     },
-     "publish": {
-         "url": "https://coupon-return-api.herokuapp.com/publish",
-          "verb": "POST",
-          "body": "",
-          "format": "json",
-          "useJwt": false,
-          "timeout": 2000
-     },
-     "validate": {
-         "url": "https://coupon-return-api.herokuapp.com/validate",
-          "verb": "POST",
-          "body": "",
-          "format": "json",
-          "useJwt": false,
-          "timeout": 2000
-     },
-     "stop": {
-         "url": "https://coupon-return-api.herokuapp.com/stop",
-          "verb": "POST",
-          "body": "",
-          "format": "json",
-          "useJwt": false,
-          "timeout": 2000
-     }
-  },
-  "wizardSteps": [
-     { "label": "Create WhatsApp Message", "key": "step1" }
-  ],
-  "userInterfaces": {
-     "configModal": {
-         "height": 600,
-         "width": 800,
-         "fullscreen": false
      }
   },
   "schema": {
       "arguments": {
           "execute": {
-              "inArguments": [
-                  {
-                      "accountSid": {
-                          "dataType": "String",
-                          "isNullable": false,
-                          "direction": "out"   
-                      }
-                  },                    
-                  {
-                      "authToken": {
-                          "dataType": "String",
-                          "isNullable": false,
-                          "direction": "out"   
-                      }
-                  },                    
-                  {
-                      "from": {
-                          "dataType": "Phone",
-                          "isNullable": false,
-                          "direction": "out"   
-                      }
-                  },                    
-                  {
-                      "to": {
-                          "dataType": "Phone",
-                          "isNullable": false,
-                          "direction": "out"   
-                      }
-                  },
-                  {
-                      "body": {
-                          "dataType": "String",
-                          "isNullable": false,
-                          "direction": "out"   
-                      }
-                  },                    
-                  {
-                      "email": {
-                          "dataType": "Email",
-                          "isNullable": true,
-                          "direction": "out"
-                      }
-                  }
-              ],
-              "outArguments": []
+              "inArguments": {},
+              "outArguments": {}
           }
       }
   }
