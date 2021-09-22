@@ -24,13 +24,9 @@ app.use('/journey/execute/code',(req,res)=>{
     res.send({"status":"ok"})
 });
 app.use('/journey/execute/',(request,response)=>{
-    console.log("execute");
-    console.log("execute");
+    console.log("Execution Starts");
     let inputData  = JWT(request.body.toString())
-    console.log("input daa ",inputData)
-    console.log("inputData['inArguments']",inputData['inArguments'])
     if(inputData && inputData['inArguments'] && inputData['inArguments'].length>0){
-        console.log("inside if")
         let couponInput = inputData['inArguments'][0];
         let inputForCoupon = {};
         inputForCoupon['TransId']           = couponInput['TransId'];
@@ -49,7 +45,6 @@ app.use('/journey/execute/',(request,response)=>{
         inputForCoupon['TransactionDate']   = couponInput['TransactionDate'];
         inputForCoupon['TransAmount']       = couponInput['TransAmount'];
         inputForCoupon['ComplexName']       = couponInput['ComplexName'];
-        console.log(inputForCoupon)
         const data = new TextEncoder().encode(
             JSON.stringify(inputForCoupon)
         )
@@ -63,103 +58,41 @@ app.use('/journey/execute/',(request,response)=>{
                 'Content-Length': data.length
               }
         }
+        console.log("Thired part API calling")
         const req = https.request(options, res => {
             let str = ''
             res.on('data', function (chunk) {
                 str += chunk;
             });
             res.on('end', function () { 
-                console.log("api end coupon is ", str)
+                console.log("Third Part API has completed. Returning coupon is  ", str)
                 response.send({code:str})
             });
         })
         req.on('error', error => {
-            console.error(error)
+            console.log("Third Part API has error - ",error)
             response.send({"code":""})
         })
         req.write(data)
         req.end()   
     }else{
-        console.log("else wrong input");
+        console.log("Input for API is wrong");
         response.send({"error":true})
     }
 });
 
 app.use('/journey/save/', (req,res)=>{
-    console.log("save");
-    console.log(JWT(req.body.toString())) 
-    console.log("save");
+    console.log("Saved");
     res.send({"status":"ok"})
 });
 app.use('/journey/publish/',(req,res)=>{
-    console.log("publish");
-    console.log("publish");
-    console.log(JWT(req.body.toString())) 
-    console.log("publish");
+    console.log("Published");
     res.send({"status":"ok"})
 });
 app.use('/journey/validate/',(req,res)=>{
-    console.log("validate");
-    console.log("validate");
-    console.log(JWT(req.body.toString())) 
-    console.log("validate");
+    console.log("Validation complete");
     res.send({"status":"ok"})
 });
-
-console.log(parseFloat(process.versions.node))
-
-app.use("/test",(request,response)=>{
-    console.log(";test")
-    let inputForCoupon = {
-        "TransId": 2474232,
-        "AmountUsed": 400,
-        "MembershipId": "GYGJBSDGFDJBHG",
-        "MemberPhone": "9500445796",
-        "Sequence": 2,
-        "BalanceType": 0,
-        "RecognitionId": 6,
-        "MemberEmail": "",
-        "SchemeId": 1,
-        "VoucherExpiry": "16 JUN 2021 13:51",
-        "BalancePoints": "45",
-        "IsEnrollment": "Y",
-        "MemberType": "Y",
-        "TransactionDate": "11 MAR 2021 11:15",
-        "TransAmount": "100",
-        "ComplexName": "PVR"
-    }
-    const data = new TextEncoder().encode(
-        JSON.stringify(inputForCoupon)
-    )
-    console.log(parseFloat(process.versions.node))
-    console.log("started to call API dd")
-    const options = {
-        hostname: 'jbcarestapi.herokuapp.com',
-        port: 443,
-        path: '/create',
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Content-Length': data.length
-          }
-    }
-    const req = https.request(options, res => {
-        let str = ''
-        res.on('data', function (chunk) {
-            str += chunk;
-        });
-        res.on('end', function () { 
-            console.log("api end coupon is ", str)
-            response.send({code:str})
-        });
-    })
-    req.on('error', error => {
-        console.error(error)
-        response.send({"code":""})
-    })
-    req.write(data)
-    req.end()  
-})
 
 
 app.listen( port, () => console.log( `App listening on port ${port}!`) )
