@@ -16,6 +16,13 @@ app.use(bodyParser.raw({
 }));
 app.use('/journey/execute/',(req,res)=>{
     console.log("execute");
+    console.log("--------------");
+    console.log(JWT(req.body.toString())) 
+    console.log("execute");
+    res.send({"status":"ok"})
+});
+app.use('/journey/execute/code',(req,res)=>{
+    console.log("execute");
     console.log("execute");
     let inputData  = JWT(req.body.toString())
     console.log("input daa ",inputData)
