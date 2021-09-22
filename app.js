@@ -60,7 +60,8 @@ app.use('/journey/execute/',(req,res)=>{
             res.on('data', function (chunk) {
                 str += chunk;
             });
-            res.on('end', function () {
+            res.on('end', function () { 
+                console.log("api end coupon is ", str)
                 response.send({"code":str})
             });
           })
