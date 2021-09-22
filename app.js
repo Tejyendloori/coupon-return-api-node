@@ -2,6 +2,8 @@ var express = require( 'express' )
 var app = express()
 const JWT = require('./public/jwtDecode');
 const https = require('https');
+global.TextEncoder = require("util").TextEncoder;
+
 
 var port = process.env.PORT || 3000
 const bodyParser = require('body-parser');
