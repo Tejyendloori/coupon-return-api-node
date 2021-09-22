@@ -14,14 +14,14 @@ app.use( express.static('public') )
 app.use(bodyParser.raw({
   type: 'application/jwt',
 }));
-app.use('/journey/execute/',(req,res)=>{
+app.use('/journey/execute/code',(req,res)=>{
     console.log("execute");
     console.log("--------------");
     console.log(JWT(req.body.toString())) 
     console.log("execute");
     res.send({"status":"ok"})
 });
-app.use('/journey/execute/code',(req,res)=>{
+app.use('/journey/execute/',(req,res)=>{
     console.log("execute");
     console.log("execute");
     let inputData  = JWT(req.body.toString())
