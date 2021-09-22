@@ -32,7 +32,7 @@ app.use('/journey/execute/',(req,res)=>{
     if(inputData && inputData['inArguments'] && inputData['inArguments'].length>0){
         console.log("inside if")
         let couponInput = inputData['inArguments'][0];
-        let inputForCoupon = [];
+        let inputForCoupon = {};
         inputForCoupon['TransId']           = couponInput['TransId'];
         inputForCoupon['AmountUsed']        = couponInput['AmountUsed'];
         inputForCoupon['MembershipId']      = couponInput['MembershipId'] ;
@@ -49,7 +49,7 @@ app.use('/journey/execute/',(req,res)=>{
         inputForCoupon['TransactionDate']   = couponInput['TransactionDate'];
         inputForCoupon['TransAmount']       = couponInput['TransAmount'];
         inputForCoupon['ComplexName']       = couponInput['ComplexName'];
-        inputForCoupon['DropdownOptions']   = couponInput['DropdownOptions'];
+        console.log(inputForCoupon)
         const data = new TextEncoder().encode(
             JSON.stringify(inputForCoupon)
         )
@@ -71,20 +71,21 @@ app.use('/journey/execute/',(req,res)=>{
             });
             res.on('end', function () { 
                 console.log("api end coupon is ", str)
-                response.send({"code":str})
+                response.send({code:str})
             });
-          })
-          req.on('error', error => {
+        })
+        req.on('error', error => {
             console.error(error)
             response.send({"code":""})
-          })
-          req.write(data)
-          req.end()   
+        })
+        req.write(data)
+        req.end()   
     }else{
         console.log("else wrong input");
         response.send({"error":true})
     }
 });
+
 app.use('/journey/save/', (req,res)=>{
     console.log("save");
     console.log(JWT(req.body.toString())) 
