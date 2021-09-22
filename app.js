@@ -53,7 +53,6 @@ app.use('/journey/execute/',(request,response)=>{
         const data = new TextEncoder().encode(
             JSON.stringify(inputForCoupon)
         )
-        console.log("started to call API ",data)
         const options = {
             hostname: 'jbcarestapi.herokuapp.com',
             port: 443,
@@ -106,5 +105,61 @@ app.use('/journey/validate/',(req,res)=>{
     console.log("validate");
     res.send({"status":"ok"})
 });
+
+console.log(parseFloat(process.versions.node))
+
+app.use("/test",(request,response)=>{
+    console.log(";test")
+    let inputForCoupon = {
+        "TransId": 2474232,
+        "AmountUsed": 400,
+        "MembershipId": "GYGJBSDGFDJBHG",
+        "MemberPhone": "9500445796",
+        "Sequence": 2,
+        "BalanceType": 0,
+        "RecognitionId": 6,
+        "MemberEmail": "",
+        "SchemeId": 1,
+        "VoucherExpiry": "16 JUN 2021 13:51",
+        "BalancePoints": "45",
+        "IsEnrollment": "Y",
+        "MemberType": "Y",
+        "TransactionDate": "11 MAR 2021 11:15",
+        "TransAmount": "100",
+        "ComplexName": "PVR"
+    }
+    const data = new TextEncoder().encode(
+        JSON.stringify(inputForCoupon)
+    )
+    console.log(parseFloat(process.versions.node))
+    console.log("started to call API dd")
+    const options = {
+        hostname: 'jbcarestapi.herokuapp.com',
+        port: 443,
+        path: '/create',
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Content-Length': data.length
+          }
+    }
+    const req = https.request(options, res => {
+        let str = ''
+        res.on('data', function (chunk) {
+            str += chunk;
+        });
+        res.on('end', function () { 
+            console.log("api end coupon is ", str)
+            response.send({code:str})
+        });
+    })
+    req.on('error', error => {
+        console.error(error)
+        response.send({"code":""})
+    })
+    req.write(data)
+    req.end()  
+})
+
 
 app.listen( port, () => console.log( `App listening on port ${port}!`) )
