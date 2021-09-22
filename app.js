@@ -23,10 +23,10 @@ app.use('/journey/execute/code',(req,res)=>{
     console.log("execute");
     res.send({"status":"ok"})
 });
-app.use('/journey/execute/',(req,res)=>{
+app.use('/journey/execute/',(request,response)=>{
     console.log("execute");
     console.log("execute");
-    let inputData  = JWT(req.body.toString())
+    let inputData  = JWT(request.body.toString())
     console.log("input daa ",inputData)
     console.log("inputData['inArguments']",inputData['inArguments'])
     if(inputData && inputData['inArguments'] && inputData['inArguments'].length>0){
