@@ -2,12 +2,13 @@
   "name": "jb-activity",
   "version": "0.0.1",
   "engines": {
-    "node": "10.x"
+    "node": "14.15"
   },
   "scripts": {
     "start": "node app.js"
   },
   "dependencies": {
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "jsonwebtoken": "^8.5.1"
   }
 }
