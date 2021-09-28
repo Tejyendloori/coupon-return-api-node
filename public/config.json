@@ -1,0 +1,117 @@
+{
+  "workflowApiVersion": "1.1",
+  "metaData": {
+    "icon": "images/icon.png"
+  },
+  "type": "REST",
+  "lang": {
+    "en-US": {
+      "description": "Custom Activity"
+    }
+  },
+  "arguments": {
+    "execute": {
+      "inArguments": [
+        {
+          "contactIdentifier": "{{Contact.Key}}"
+        }
+      ],
+      "outArguments": [],
+      "url": "https://coupon-return-api.herokuapp.com/journey/execute",
+      "verb": "POST",
+      
+      "format": "json",
+      "useJwt": true,
+      "timeout": 10000
+    },
+    "save": {
+      "inArguments": [
+        {
+          "contactIdentifier": "TST"
+        }
+      ],
+      "outArguments": [],
+      "url": "https://coupon-return-api.herokuapp.com/journey/save",
+      "verb": "POST",
+      "useJwt": true
+      
+    }
+  },
+  "configurationArguments": {
+    "execute": {
+      "inArguments": [
+        {
+          "contactIdentifier": "{{Contact.Key}}"
+        }
+      ],
+      "outArguments": [],
+      "url": "https://coupon-return-api.herokuapp.com/journey/execute",
+      "verb": "POST",
+      
+      "format": "json",
+      "useJwt": true,
+      "timeout": 10000
+    },
+    "save": {
+      "inArguments": [
+        {
+          "contactIdentifier": "TEST"
+        }
+      ],
+      "outArguments": [],
+      "url": "https://coupon-return-api.herokuapp.com/journey/save",
+      "verb": "POST",
+      "useJwt": true
+      
+    },
+    "publish": {
+      "url": "https://coupon-return-api.herokuapp.com/journey/publish",
+      "verb": "POST",
+      "useJwt": true
+    },
+    "stop": {
+      "url": "https://coupon-return-api.herokuapp.com/journey/stop",
+      "verb": "POST",
+      "useJwt": true
+    },
+    "validate": {
+      "url": "https://coupon-return-api.herokuapp.com/journey/validate",
+      "verb": "POST",
+      "useJwt": true
+    }
+  },
+  "userInterfaces": {
+    "configInspector": {
+      "hideHeader": true,
+      "size": "scm-sm"
+    }
+  },
+  "schema": {
+    "arguments": {
+        "execute": {
+            "inArguments": [
+              {
+                "contactIdentifier": {
+                  "dataType": "String",
+                  "direction": "out",
+                  "access": "visible"
+                }
+              }
+            ],
+            "outArguments": []
+        },
+        "save": {
+          "inArguments": [
+            {
+              "contactIdentifier": {
+                "dataType": "String",
+                "direction": "out",
+                "access": "visible"
+              }
+            }
+          ],
+          "outArguments": []
+      }
+    }
+  }
+}
