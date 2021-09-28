@@ -65,7 +65,7 @@ const cloudFunctionEndpoint: string = `https://asia-south1-pvr-data-project.clou
         reply.send({
             status: 200
         });
-        console.log("response has sent.. should not be print")
+        console.log("response has sent.. ")
     } else {
         reply.send({'status':'failed'})
     }
