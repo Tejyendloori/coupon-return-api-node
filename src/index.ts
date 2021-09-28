@@ -60,6 +60,8 @@ const cloudFunctionEndpoint: string = `https://asia-south1-pvr-data-project.clou
             .request({url, headers ,method:"POST", data: JSON.stringify(couponInput)});
     
         // 7. Return the status and payload of the Cloud Function
+        await new Promise(resolve => setTimeout(resolve, 15000));
+        console.log("Mail is triggering from Node")
         reply.send({
             status: 200
         });
