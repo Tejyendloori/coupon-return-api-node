@@ -55,7 +55,7 @@ const cloudFunctionEndpoint: string = `https://asia-south1-pvr-data-project.clou
         // const data = new TextEncoder().encode(
         //     JSON.stringify(couponInput)
         // )
-        console.log("sending to static function now")
+        console.log("sending to " + url)
         clientjwt
             .request({url, headers ,method:"POST", data: JSON.stringify(couponInput)});
     
