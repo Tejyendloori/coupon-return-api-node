@@ -14,6 +14,7 @@ nodeapp.use(bodyParser.raw({
     type: 'application/jwt',
 }));
 nodeapp.use( express.static('public') )
+// nodeapp.use(bodyParser.json()); // local fun
 
 export const app: FastifyInstance<Server, IncomingMessage, ServerResponse> = fastify({logger: true});
 const port = process.env.PORT || 3000;
@@ -46,6 +47,7 @@ const cloudFunctionEndpoint: string = `https://asia-south1-pvr-data-project.clou
         ['Authorization', `Bearer ${token}`],
     ]);
     let inputData  = JWT_decoder(request.body.toString())
+    // let inputData  = request.body //JWT_decoder(request.body.toString())
     console.log ("Got Input ", inputData)
     if(inputData && inputData['inArguments'] && inputData['inArguments'].length>0){
         let couponInput = inputData['inArguments'][0];
@@ -58,10 +60,14 @@ const cloudFunctionEndpoint: string = `https://asia-south1-pvr-data-project.clou
             .request({url, headers ,method:"POST", data: JSON.stringify(couponInput)});
     
         // 7. Return the status and payload of the Cloud Function
+        console.log("got response from dynamic fun ", result.data)
         reply.send({
             status: result.status,
             body: result.data,
         });
+        console.log("response has sent.. should not be print")
+    } else {
+        reply.send({'status':'failed'})
     }
 });
 
