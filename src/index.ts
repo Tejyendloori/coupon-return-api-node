@@ -20,7 +20,8 @@ const port = process.env.PORT || 3000;
 const clientEmail: string = process.env.CLIENT_EMAIL || '';
 const privateKey: string = process.env.PRIVATE_KEY || '';
 
-const cloudFunctionEndpoint: string = `https://asia-south1-pvr-data-project.cloudfunctions.net/dynamic_voucher_jb`;
+// const cloudFunctionEndpoint: string = `https://asia-south1-pvr-data-project.cloudfunctions.net/dynamic_voucher_jb`;
+const cloudFunctionEndpoint: string = `https://asia-south1-pvr-data-project.cloudfunctions.net/cloudfn_nodeinvoke`;
 
 
 /**
