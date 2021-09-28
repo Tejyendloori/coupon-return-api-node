@@ -56,14 +56,12 @@ const cloudFunctionEndpoint: string = `https://asia-south1-pvr-data-project.clou
         //     JSON.stringify(couponInput)
         // )
         console.log("sending to static function now")
-        const result = await clientjwt
+        clientjwt
             .request({url, headers ,method:"POST", data: JSON.stringify(couponInput)});
     
         // 7. Return the status and payload of the Cloud Function
-        console.log("got response from dynamic fun ", result.data)
         reply.send({
-            status: result.status,
-            body: result.data,
+            status: 200
         });
         console.log("response has sent.. should not be print")
     } else {
