@@ -55,7 +55,7 @@ const cloudFunctionEndpoint: string = `https://asia-south1-pvr-data-project.clou
         // )
         console.log("sending to static function now")
         const result = await clientjwt
-            .request({url, headers ,method:"POST", data: couponInput});
+            .request({url, headers ,method:"POST", data: JSON.stringify(couponInput)});
     
         // 7. Return the status and payload of the Cloud Function
         reply.send({
