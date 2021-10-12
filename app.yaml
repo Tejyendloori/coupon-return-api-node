@@ -14,11 +14,10 @@
 # [START gae_quickstart_yaml]
 runtime: nodejs14
 automatic_scaling:
-  target_cpu_utilization: 0.65
   min_idle_instances: 5
   min_instances: 5
   max_instances: 100
   min_pending_latency: 15ms
   max_pending_latency: 15s
-  max_concurrent_requests: 10
+  max_concurrent_requests: 4
 # [END gae_quickstart_yaml]
