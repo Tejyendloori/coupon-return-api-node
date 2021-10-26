@@ -33,7 +33,7 @@ const cloudFunctionEndpoint: string = `https://asia-south1-pvr-data-project.clou
     let inputData  = JWT_decoder(request.body.toString())
     if(inputData && inputData['inArguments'] && inputData['inArguments'].length>0){
         const url: string = inputData['inArguments'][0]['cloudFunctionEndpoint'];
-        console.log("cloud function URL ", url)
+        console.log("cloud function URL ", inputData)
         if (!clientEmail || ! privateKey) {
             reply
                 .status(500)
