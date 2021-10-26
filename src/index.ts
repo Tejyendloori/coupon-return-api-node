@@ -30,26 +30,29 @@ const cloudFunctionEndpoint: string = `https://asia-south1-pvr-data-project.clou
  */
  nodeapp.use('/journey/execute/', async (request:any, reply:any) => {
     console.log("Execution Starts");
-    const url: string = cloudFunctionEndpoint;
-    if (!clientEmail || ! privateKey) {
-        reply
-            .status(500)
-            .send(`Make sure that the 'CLIENT_EMAIL' and 'PRIVATE_KEY' environment variables exists!!!`);
-        return;
-    }
-    const clientjwt = new JWT({
-        email: clientEmail,
-        key: privateKey,
-    });
-    const token = await clientjwt.fetchIdToken(url);
-    console.log("token generated successfully -", token)
-    const headers = new Map([
-        ['Authorization', `Bearer ${token}`],
-    ]);
     let inputData  = JWT_decoder(request.body.toString())
-    // let inputData  = request.body //JWT_decoder(request.body.toString())
-    console.log ("Got Input ", inputData)
     if(inputData && inputData['inArguments'] && inputData['inArguments'].length>0){
+        const url: string = inputData['inArguments'][0]['cloudFunctionEndpoint'];
+        console.log("cloud function URL ", url)
+        if (!clientEmail || ! privateKey) {
+            reply
+                .status(500)
+                .send(`Make sure that the 'CLIENT_EMAIL' and 'PRIVATE_KEY' environment variables exists!!!`);
+            return;
+        }
+        const clientjwt = new JWT({
+            email: clientEmail,
+            key: privateKey,
+        });
+        const token = await clientjwt.fetchIdToken(url);
+        console.log("token generated successfully -", token)
+        const headers = new Map([
+            ['Authorization', `Bearer ${token}`],
+        ]);
+        
+        // let inputData  = request.body //JWT_decoder(request.body.toString())
+        console.log ("Got Input ", inputData)
+    
         let couponInput = inputData['inArguments'][0];
         console.log("coupon input", couponInput)
         // const data = new TextEncoder().encode(
@@ -68,64 +71,6 @@ const cloudFunctionEndpoint: string = `https://asia-south1-pvr-data-project.clou
         console.log("response has sent.. ")
     } else {
         reply.send({'status':'failed'})
-    }
-});
-
-nodeapp.use('/journey/execute/archived',(request:any,response:any)=>{
-    console.log("Execution Starts");
-    let inputData  = JWT_decoder(request.body.toString())
-    if(inputData && inputData['inArguments'] && inputData['inArguments'].length>0){
-        let couponInput = inputData['inArguments'][0];
-        let inputForCoupon:any = {};
-        inputForCoupon['TransId']           = couponInput['TransId'];
-        inputForCoupon['AmountUsed']        = couponInput['AmountUsed'];
-        inputForCoupon['MembershipId']      = couponInput['MembershipId'] ;
-        inputForCoupon['MemberPhone']       = couponInput['MemberPhone'];
-        inputForCoupon['Sequence']          = couponInput['Sequence'];
-        inputForCoupon['BalanceType']       = couponInput['BalanceType'] ;
-        inputForCoupon['RecognitionId']     = couponInput['RecognitionId'];
-        inputForCoupon['MemberEmail']       = couponInput['MemberEmail'];
-        inputForCoupon['SchemeId']          = couponInput['SchemeId'];
-        inputForCoupon['VoucherExpiry']     = couponInput['VoucherExpiry'];
-        inputForCoupon['BalancePoints']     = couponInput['BalancePoints'];
-        inputForCoupon['IsEnrollment']      = couponInput['IsEnrollment'];
-        inputForCoupon['MemberType']        = couponInput['MemberType'];
-        inputForCoupon['TransactionDate']   = couponInput['TransactionDate'];
-        inputForCoupon['TransAmount']       = couponInput['TransAmount'];
-        inputForCoupon['ComplexName']       = couponInput['ComplexName'];
-        const data = new TextEncoder().encode(
-            JSON.stringify(inputForCoupon)
-        )
-        const options = {
-            hostname: 'jbcarestapi.herokuapp.com',
-            port: 443,
-            path: '/create',
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Content-Length': data.length
-              }
-        }
-        console.log("Thired part API calling")
-        const req = https.request(options, (res:any) => {
-            let str = ''
-            res.on('data', (chunk:any) =>{
-                str += chunk;
-            });
-            res.on('end', function () { 
-                console.log("Third Part API has completed. Returning coupon is  ", str)
-                response.send({code:str})
-            });
-        })
-        req.on('error', (error:any) => {
-            console.log("Third Part API has error - ",error)
-            response.send({"code":""})
-        })
-        req.write(data)
-        req.end()   
-    }else{
-        console.log("Input for API is wrong");
-        response.send({"error":true})
     }
 });
 
